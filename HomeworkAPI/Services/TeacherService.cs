@@ -41,7 +41,7 @@ namespace HomeworkAPI.Services
             return _teacherRepository.GetByName(name);
         }
 
-        public IReadOnlyList<Teacher> GroupByTaughtSubject()
+        public List<Teacher> GroupByTaughtSubject()
         {
             throw new NotImplementedException();
         }

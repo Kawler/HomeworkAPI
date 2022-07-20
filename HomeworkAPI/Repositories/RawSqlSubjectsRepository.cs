@@ -134,5 +134,28 @@ namespace HomeworkAPI.Repositories
             sqlCommand.Parameters.Add("@subjectName", SqlDbType.NVarChar,30).Value = subjects.SubjectName;
             sqlCommand.ExecuteNonQuery();
         }
+
+        public List<Teacher> GroupByTaughtSubject()
+        {
+            var result = new List<Teacher>();
+
+            using var connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            using SqlCommand sqlCommand = connection.CreateCommand();
+            sqlCommand.CommandText = "select count([Id]) c, [TaughtSubject] from [Teacher] group by [TaughtSubject]";
+
+            using SqlDataReader reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                result.Add(new Teacher(
+                    Convert.ToInt32(reader["c"]),
+                    "Lazyness",
+                    Convert.ToString(reader["TaughtSubject"])
+                ));
+            }
+
+            return result;
+        }
     }
 }

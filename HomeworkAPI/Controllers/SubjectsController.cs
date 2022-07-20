@@ -95,6 +95,20 @@ namespace HomeworkAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet]
+        [Route("group")]
+        public IActionResult GroupGroupByTaughtSubject()
+        {
+            try
+            {
+                return Ok(_subjectsService.GroupByTaughtSubject());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
     
 }

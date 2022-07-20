@@ -15,5 +15,6 @@ namespace HomeworkAPI.Services
         void Update(Subjects subjects);
         void Delete(Subjects subjects);
         void Create(Subjects subjects);
+        List<Teacher> GroupByTaughtSubject();
     }
 }

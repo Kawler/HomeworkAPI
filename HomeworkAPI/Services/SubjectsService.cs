@@ -41,9 +41,15 @@ namespace HomeworkAPI.Services
             return _subjectsRepository.GetByName(name);
         }
 
+        public List<Teacher> GroupByTaughtSubject()
+        {
+            return _subjectsRepository.GroupByTaughtSubject();
+        }
+
         public void Update(Subjects subjects)
         {
             _subjectsRepository.Update(subjects);
         }
+
     }
 }
