@@ -13,7 +13,7 @@ namespace HomeworkAPI.Repositories
         Teacher GetByName(string name);
         Teacher GetById(int id);
         void Delete(Teacher teacher);
-        IReadOnlyList<Teacher> GroupByTaughtSubject();
+        List<Tuple<int, string>> GroupByTaughtSubject();
         void Create(Teacher teacher);
         void Update(Teacher teacher);
     }

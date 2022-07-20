@@ -80,9 +80,9 @@ namespace HomeworkAPI.Repositories
             sqlCommand.ExecuteNonQuery();
         }
 
-        public IReadOnlyList<Teacher>GroupByTaughtSubject()
+        public List<Tuple<int,string>>GroupByTaughtSubject()
         {
-            var result = new List<Teacher>();
+            var result = new List<Tuple<int, string>>();
 
             using var connection = new SqlConnection(_connectionString);
             connection.Open();
@@ -93,9 +93,8 @@ namespace HomeworkAPI.Repositories
             using SqlDataReader reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
-                result.Add(new Teacher(
+                result.Add(new Tuple<int,string>(
                     Convert.ToInt32(reader["c"]),
-                    "Lazyness",
                     Convert.ToString(reader["TaughtSubject"])
                 ));
             }
